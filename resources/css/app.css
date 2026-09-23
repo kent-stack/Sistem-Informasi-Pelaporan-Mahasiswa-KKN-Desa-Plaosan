@@ -39,16 +39,18 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Navigation Default (Solid) */
+/* Navigation Default (Transparent) */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 5%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 1rem 5%;
+    background: rgba(0, 0, 0, 0);
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    box-shadow: none;
     position: fixed;
     width: 100%;
     top: 0;
@@ -57,10 +59,53 @@ nav {
     pointer-events: auto; /* Pastikan bisa diklik */
 }
 
+body:not(.has-hero) nav {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body:not(.has-hero) nav .logo {
+    color: var(--primary) !important;
+}
+
+body:not(.has-hero) nav .logo span,
+body:not(.has-hero) nav.transparent .logo span,
+body:not(.has-hero) nav.scrolled .logo span {
+    color: var(--secondary) !important;
+}
+
+body:not(.has-hero) nav.transparent .logo,
+body:not(.has-hero) nav.scrolled .logo {
+    color: var(--primary) !important;
+}
+
+body:not(.has-hero) nav .nav-links a {
+    color: #0f172a;
+}
+
+body:not(.has-hero) nav .nav-links a:hover,
+body:not(.has-hero) nav .nav-links a.active {
+    color: var(--primary) !important;
+}
+
+body:not(.has-hero) nav .nav-links a.active::after {
+    background: var(--primary) !important;
+}
+
+body:not(.has-hero) nav .nav-auth-btn {
+    color: var(--primary) !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0 !important;
+}
+
 .logo {
     font-weight: 800;
     font-size: 1.5rem;
-    color: var(--primary);
+    color: #ffffff;
     letter-spacing: -0.5px;
     display: flex;
     align-items: center;
@@ -69,12 +114,12 @@ nav {
 }
 
 .logo span {
-    color: var(--secondary);
+    color: #ffffff;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-main);
+    color: rgba(255, 255, 255, 0.9);
     margin-left: 2.2rem;
     font-weight: 600;
     font-size: 0.95rem;
@@ -84,7 +129,7 @@ nav {
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--primary);
+    color: #10b981;
 }
 
 .nav-links a.active::after {
@@ -94,7 +139,7 @@ nav {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--primary);
+    background: #10b981;
     border-radius: 2px;
 }
 
@@ -103,52 +148,95 @@ html {
 }
 
 /* Transparent State (Only for pages with hero background) */
-nav.transparent:not(.scrolled) {
-    background: transparent;
-    border-bottom: 1px solid transparent;
-    box-shadow: none;
-    padding: 1.2rem 5%;
-    backdrop-filter: none;
+/* SEKARANG BERLAKU DI SEMUA UKURAN LAYAR SAAT DI-SCROLL DOWN */
+nav.transparent.scrolled {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
-/* Hanya buat tulisan putih jika ada di dalam hero section (Home Page) */
+/* Supaya tidak kalah oleh rule spesifik has-hero */
+body.has-hero nav.transparent.scrolled {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+}
+
+/* Pastikan state scrolled selalu menang meski ada inline/selector lain */
+nav.scrolled {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Mengubah warna komponen teks navbar menjadi gelap kontras saat di-scroll */
+nav.scrolled .logo {
+    color: var(--primary) !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+}
+
+nav.scrolled .logo span {
+    color: var(--secondary) !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+}
+
+nav.scrolled .nav-links a {
+    color: #0f172a !important;
+    text-shadow: none !important;
+}
+
+nav.scrolled .nav-links a:hover,
+nav.scrolled .nav-links a.active {
+    color: var(--primary) !important;
+}
+
+nav.scrolled .nav-links a.active::after {
+    background: var(--primary) !important;
+}
+
+/* Buat tombol login hanya teks tanpa kotak */
+.nav-auth-btn {
+    color: #ffffff !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0 !important;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav.scrolled .nav-auth-btn {
+    color: var(--primary) !important;
+    background: transparent !important;
+}
+
+.nav-auth-btn:hover {
+    color: #047857 !important;
+    transform: translateY(-1px);
+}
+
+
+
+
+
+/* Hanya buat tulisan putih jika berada di paling atas halaman (belum di-scroll) */
 .hero-section + nav.transparent:not(.scrolled) .nav-links a,
 body.has-hero nav.transparent:not(.scrolled) .nav-links a {
-    color: #ffffff;
+    color: #ffffff !important;
+}
+
+body.has-hero nav.transparent:not(.scrolled) .nav-links a:hover,
+body.has-hero nav.transparent:not(.scrolled) .nav-links a.active {
+    color: #ffffff !important;
+}
+
+body.has-hero nav.transparent:not(.scrolled) .nav-links a.active::after {
+    background: #ffffff !important;
 }
 
 /* Default warna menu saat navbar transparan di halaman biasa */
 nav.transparent:not(.scrolled) .nav-links a {
     color: var(--text-main);
-}
-
-/* Tombol Login Default (Solid Navbar) */
-.nav-auth-btn {
-    color: var(--primary) !important;
-    background: transparent !important;
-    border: none !important;
-    font-weight: 700;
-}
-
-/* Tombol Login saat di atas (Hero) */
-nav.transparent:not(.scrolled) .nav-auth-btn {
-    background: transparent !important;
-    border: none !important;
-    color: #ffffff !important;
-    font-weight: 700;
-}
-
-/* Tombol Login saat di-scroll */
-nav.scrolled .nav-auth-btn {
-    color: var(--primary) !important;
-    background: transparent !important;
-    border: none !important;
-    font-weight: 700;
-}
-
-nav.scrolled .nav-auth-btn:hover {
-    color: #047857 !important;
-    transform: translateY(-2px);
 }
 
 nav.transparent:not(.scrolled) .logo {
@@ -170,11 +258,11 @@ nav.transparent:not(.scrolled) .nav-links a {
 
 nav.transparent:not(.scrolled) .nav-links a:hover,
 nav.transparent:not(.scrolled) .nav-links a.active {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 nav.transparent:not(.scrolled) .nav-links a.active::after {
-    background: #ffffff;
+    background: #ffffff !important;
 }
 
 /* Hero Section with Image Background */
@@ -874,6 +962,22 @@ nav.transparent:not(.scrolled) .nav-links a.active::after {
     }
 }
 
+.more-report-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+    width: 100%;
+    grid-auto-rows: minmax(0, auto);
+}
+
+#more-reports-modal .more-report-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.more-report-grid .modal-result-card {
+    width: 100%;
+}
+
 /* Footer */
 footer {
     text-align: center;
@@ -911,6 +1015,16 @@ footer {
     .upload-section {
         margin-top: 0;
         padding-top: 3rem;
+    }
+
+    .more-report-grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem;
+    }
+
+    .more-report-grid .modal-result-card {
+        width: 100%;
+        padding: 1.3rem !important;
     }
 }
 
@@ -1221,13 +1335,20 @@ footer {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-nav.transparent:not(.scrolled) .mobile-menu-toggle span {
+nav.transparent:not(.scrolled) .mobile-menu-toggle span,
+body.has-hero nav .mobile-menu-toggle span {
     background-color: #ffffff;
+}
+
+nav.transparent:not(.scrolled) .mobile-menu-toggle.active span:nth-child(1),
+nav.transparent:not(.scrolled) .mobile-menu-toggle.active span:nth-child(3),
+body.has-hero nav .mobile-menu-toggle.active span:nth-child(1),
+body.has-hero nav .mobile-menu-toggle.active span:nth-child(3) {
+    background-color: #ffffff !important;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
-    background-color: var(--text-main) !important;
 }
 
 .mobile-menu-toggle.active span:nth-child(2) {
@@ -1236,7 +1357,6 @@ nav.transparent:not(.scrolled) .mobile-menu-toggle span {
 
 .mobile-menu-toggle.active span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
-    background-color: var(--text-main) !important;
 }
 
 /* Mobile Navigation adjustments */
@@ -1310,11 +1430,11 @@ nav.transparent:not(.scrolled) .mobile-menu-toggle span {
 
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: clamp(1.8rem, 8vw, 2.4rem);
+        font-size: clamp(1.6rem, 8vw, 2rem);
     }
 
     .section-header h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .results-grid {
@@ -1332,6 +1452,84 @@ nav.transparent:not(.scrolled) .mobile-menu-toggle span {
     .modal-content {
         padding: 1.5rem;
     }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+
+    .featured-report-card__title {
+        font-size: 1.4rem;
+    }
+
+    .featured-report-card__summary {
+        font-size: 0.95rem;
+    }
+
+    .reports-section-title {
+        font-size: 1.35rem;
+    }
+
+    .reports-section-line {
+        width: 160px;
+    }
+}
+
+.reports-section-header {
+    max-width: 1300px;
+    margin: 0 auto 2rem;
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.reports-section-title {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0 0 0.75rem;
+}
+
+    .reports-section-line {
+        display: inline-block !important;
+        width: 220px !important;
+        height: 4px !important;
+        background: #10b981 !important;
+        border-radius: 999px !important;
+        margin-top: 0.75rem !important;
+    }
+
+.featured-report-card__title {
+    font-size: 1.6rem;
+}
+
+/* Center 'More' inside modal result cards and ensure title is left-aligned */
+#more-reports-modal .modal-result-card .report-more-btn {
+    display: block !important;
+    margin: 0.75rem auto 0 auto !important;
+}
+
+#more-reports-modal .modal-result-card .report-title-btn {
+    text-align: left !important;
+    align-self: stretch !important;
+}
+
+.featured-report-card__cta-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+.featured-report-card__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #dc2626;
+    background: none;
+    border: none;
+    padding: 0.55rem 1rem;
+    cursor: pointer;
 }
 
 /* Custom Logout Button Style */

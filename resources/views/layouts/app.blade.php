@@ -20,7 +20,7 @@
 </head>
 <body class="{{ $bodyClass ?? '' }}">
 
-    <nav class="{{ request()->routeIs('home') ? 'transparent' : '' }}">
+    <nav>
         <div class="logo">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 12 12 17 22 12"></polyline><polyline points="2 17 12 22 22 17"></polyline></svg>KKN <span>Plaosan</span>
         </div>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
             @else
-                <a href="{{ route('login') }}" class="btn btn-primary nav-auth-btn">Login</a>
+                <a href="{{ route('login') }}" class="btn btn-primary nav-auth-btn" style="color: white;">Login</a>
             @endauth
         </div>
     </nav>

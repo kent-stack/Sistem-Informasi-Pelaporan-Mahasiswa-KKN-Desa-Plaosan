@@ -6,13 +6,26 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
-    $reports = App\Models\Report::latest()->take(6)->get();
-    return view('home', compact('reports'));
+    $allReports = App\Models\Report::latest()->get();
+    $reports = $allReports->take(8);
+    return view('home', compact('reports', 'allReports'));
 })->name('home');
 
 Route::get('/projects', function () {
     return view('projects');
 })->name('projects');
+
+Route::get('/storage/{path}', function ($path) {
+    $path = urldecode($path);
+    if (str_contains($path, '..')) {
+        abort(404);
+    }
+    $fullPath = storage_path('app/public/' . $path);
+    if (!file_exists($fullPath) || !is_readable($fullPath)) {
+        abort(404);
+    }
+    return response()->file($fullPath);
+})->where('path', '.*');
 
 Route::get('/participants', function () {
     return view('participants');

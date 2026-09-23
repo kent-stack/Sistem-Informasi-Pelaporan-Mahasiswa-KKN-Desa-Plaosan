@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Administrator KKN',
                 'nim' => 'ADMIN01',
-                'password' => Hash::make('AdminPlaosan2026!'),
+                'password' => Hash::make('AdminPlaosan1!'),
                 'is_admin' => true,
             ]
         );
