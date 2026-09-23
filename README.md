@@ -1,3 +1,29 @@
+# Sistem Informasi Pelaporan Mahasiswa KKN Desa Plaosan
+
+## KKN International Plaosan Village Website
+
+Official web application for managing, showcasing, and documenting the International Community-Based Service Program (KKN) in Plaosan Village.
+
+## Key Features
+
+- Program showcase and highlights
+- Project tracking and documentation
+- Weekly activity reports
+- Participant and resource management
+- Admin panel for content and report management
+
+## Participating Institutions
+
+- Institut Teknologi dan Bisnis Asia Malang
+- Politeknik Tuanku Syed Sirajuddin
+- Politeknik Sandakan Sabah
+- Politeknik Sultan Abdul Halim Mu'adzam Shah
+- Kolej Komuniti Arau
+
+## Live Demo
+
+https://iesp-plaosan.asia.ac.id/
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -56,3 +82,32 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# Sistem-Informasi-Pelaporan-Mahasiswa-KKN-Desa-Plaosan
+# KKN International Plaosan Village Website
+
+Official web application for managing, showcasing, and documenting the **International Community-Based Service Program (KKN)** in Plaosan Village, held from May 20 to June 16, 2026. 
+
+This platform serves as a central hub for hosting institution updates, participant activities, project tracking, weekly field reports, and institutional cross-border collaborations.
+
+## 🌟 Key Features
+
+- **Program Showcase & Highlights**: Displays information about international collaboration between ITB Asia Malang and partner Malaysian polytechnics/colleges.
+- **Project Tracking**: Detailed listings and documentation for community service projects (e.g., Social Media Marketing Kits, Tourism Mapping, Village Branding).
+- **Weekly Activity Reports**: Structured portal for participants to submit and publish progress updates and field reports.
+- **Leadership & Partner Voices**: Dedicated sections featuring welcome messages and endorsements from partner institutions.
+- **Participant & Resource Management**: Directory of participants and downloadable project assets/templates.
+- **Admin Panel**: Back-office management system for content updates, report reviews, and user management.
+
+## 🤝 Participating Institutions
+
+- **Host**: Institut Teknologi dan Bisnis Asia Malang (ITB Asia Malang)
+- **Partners**: 
+  - Politeknik Tuanku Syed Sirajuddin (PTSS)
+  - Politeknik Sandakan Sabah (PSS)
+  - Politeknik Sultan Abdul Halim Mu'adzam Shah (POLIMAS)
+  - Kolej Komuniti Arau
+ 
+## Live Demo
+Website dapat diakses di: https://iesp-plaosan.asia.ac.id/
+>>>>>>> origin/main
